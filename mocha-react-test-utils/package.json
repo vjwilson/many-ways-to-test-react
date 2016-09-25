@@ -4,7 +4,7 @@
   "description": "Using Mocha, paired with React Test Utils, to test React apps",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -w test/helpers/browser.js test/*.spec.js",
+    "test": "mocha -w --reporter nyan test/helpers/browser.js test/*.spec.js",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
   },
   "keywords": [
@@ -24,6 +24,7 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "chai": "^3.5.0",
     "jsdom": "^9.5.0",
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.1",

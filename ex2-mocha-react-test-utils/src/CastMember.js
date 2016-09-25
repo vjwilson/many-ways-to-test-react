@@ -1,22 +1,24 @@
-import React from 'react';
+var React = require('react');
 
-const CastMember = ({member}) => {
-  const imageUrl = `/images/${member.thumbnailUrl}`;
+var CastMember = React.createClass({
+  render: function() {
+    var imageUrl = `/images/${this.props.member.thumbnailUrl}`;
 
-  return (
-    <div className="media">
-      <div className="media-left">
-        <a href="#">
-          <img className="media-object" src={imageUrl} alt={member.name} />
-        </a>
+    return (
+      <div className="media">
+        <div className="media-left">
+          <a href="#">
+            <img className="media-object" src={imageUrl} alt={this.props.member.name} />
+          </a>
+        </div>
+        <div className="media-body">
+          <h2 className="media-heading">{this.props.member.name}</h2>
+          {this.props.member.bio}
+        </div>
       </div>
-      <div className="media-body">
-        <h2 className="media-heading">{member.name}</h2>
-        {member.bio}
-      </div>
-    </div>
-  );
-}
+    );
+  }
+});
 
-export default CastMember;
+module.exports = CastMember;
 

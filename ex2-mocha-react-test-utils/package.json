@@ -35,7 +35,7 @@
     "mocha": "^3.0.2",
     "npm-run-all": "^3.1.0",
     "react-addons-test-utils": "15.0.2",
+    "react-shallow-testutils": "^2.0.0",
     "webpack": "^1.13.2"
   }
 }
-

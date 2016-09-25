@@ -1,7 +1,7 @@
-import chai from 'chai';
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import CastMember from '../src/CastMember';
+var chai = require('chai');
+var React= require('react');
+var TestUtils = require('react-addons-test-utils');
+var CastMember = require('../src/CastMember');
 
 const expect = chai.expect;
 

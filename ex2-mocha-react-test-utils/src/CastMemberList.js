@@ -1,17 +1,18 @@
-import React from 'react';
-import CastMember from './CastMember';
+var React = require('react');
+var CastMember = require('./CastMember');
 
-const CastMemberList = ({members}) => {
-  const castMembers = members.map((member) => {
-    return <CastMember key={member.id} member={member} />
-  });
+var CastMemberList = React.createClass({
+  render: function() {
+    const castMembers = this.props.members.map((member) => {
+      return <CastMember key={member.id} member={member} />
+    });
 
-  return (
-    <div>
-      {castMembers}
-    </div>
-  );
-}
+    return (
+      <div>
+        {castMembers}
+      </div>
+    );
+  }
+});
 
-export default CastMemberList;
-
+module.exports = CastMemberList;

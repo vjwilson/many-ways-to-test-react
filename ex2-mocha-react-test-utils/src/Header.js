@@ -35,7 +35,7 @@ var Header = React.createClass({
               </div>
               <button type="submit" className="btn btn-default">Go</button>
             </form>
-            <ul className="nav navbar-nav navbar-right">
+            <ul className="nav navbar-nav navbar-right login-block">
               <li className="navbar-text">{authMessage}</li>
               <li><a href="#" className="navbar-link">{authLinkText}</a></li>
             </ul>

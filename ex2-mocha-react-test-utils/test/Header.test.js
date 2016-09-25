@@ -1,6 +1,7 @@
 var chai = require('chai');
 var React= require('react');
 var TestUtils= require('react-addons-test-utils');
+var ShallowTestUtils = require('react-shallow-testutils');
 var Header= require('../src/Header');
 
 var expect = chai.expect;
@@ -33,25 +34,32 @@ describe('Header component', () => {
   it('should a login link if no authenticated user', () => {
     var output = setup();
 
-    var loginBlock = output.props.children.props.children[1].props.children[2].props.children;
+    // var loginBlock = output.props.children.props.children[1].props.children[2].props.children;
 
-    expect(loginBlock[0].type).to.equal('li');
-    expect(loginBlock[0].props.children).to.equal('Have an account?');
+    // expect(loginBlock[0].type).to.equal('li');
+    // expect(loginBlock[0].props.children).to.equal('Have an account?');
 
-    expect(loginBlock[1].props.children.type).to.equal('a');
-    expect(loginBlock[1].props.children.props.className).to.equal('navbar-link');
-    expect(loginBlock[1].props.children.props.children).to.equal('Login');
+    // expect(loginBlock[1].props.children.type).to.equal('a');
+    // expect(loginBlock[1].props.children.props.className).to.equal('navbar-link');
+    // expect(loginBlock[1].props.children.props.children).to.equal('Login');
+
+    var loginBlock = ShallowTestUtils.findWithClass(output, 'login-block');
+
+    expect(loginBlock.props.children[0].type).to.equal('li');
+    expect(loginBlock.props.children[0].props.children).to.equal('Have an account?');
+
+    expect(loginBlock.props.children[1].props.children.type).to.equal('a');
+    expect(loginBlock.props.children[1].props.children.props.className).to.equal('navbar-link');
+    expect(loginBlock.props.children[1].props.children.props.children).to.equal('Login');
   });
 
   it('should render a nav with username and logout link if user logged in', () => {
     var output = setup(user);
 
-    var loginBlock = output.props.children.props.children[1].props.children[2].props.children;
+    var loginBlock = ShallowTestUtils.findWithClass(output, 'login-block');
 
-    expect(loginBlock[0].type).to.equal('li');
-    expect(loginBlock[0].props.children).to.equal('Welcome, ' + user.username);
+    expect(loginBlock.props.children[0].props.children).to.equal('Welcome, ' + user.username);
 
-    expect(loginBlock[1].props.children.type).to.equal('a');
-    expect(loginBlock[1].props.children.props.children).to.equal('Logout');
+    expect(loginBlock.props.children[1].props.children.props.children).to.equal('Logout');
   });
 });

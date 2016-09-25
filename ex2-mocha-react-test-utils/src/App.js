@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Header from './Header';
-import Jumbotron from './Jumbotron';
-import CastMemberList from './CastMemberList';
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Header = require('./Header');
+var Jumbotron = require('./Jumbotron');
+var CastMemberList = require('./CastMemberList');
 
 const App = React.createClass({
   getInitialState: function() {

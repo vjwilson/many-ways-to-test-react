@@ -8,7 +8,7 @@ var CastMemberList = React.createClass({
     });
 
     return (
-      <div>
+      <div className="member-list">
         {castMembers}
       </div>
     );

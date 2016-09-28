@@ -4,36 +4,18 @@ var Header = require('./Header');
 var Jumbotron = require('./Jumbotron');
 var CastMemberList = require('./CastMemberList');
 
-const App = React.createClass({
+var App = React.createClass({
   getInitialState: function() {
     return {
-      castMembers: [
-        {
-          id: 1,
-          name: 'Rex',
-          imageUrl: 'collie-yawning-a97c4a1614b53d6f55ae2464b06ba6aa.jpg',
-          thumbnailUrl: 'collie-yawning-64x64.jpg',
-          bio: 'Rex is an up-and-coming actor.'
-        },
-        {
-          id: 2,
-          name: 'Sally',
-          imageUrl: 'collie-yawning-a97c4a1614b53d6f55ae2464b06ba6aa.jpg',
-          thumbnailUrl: 'sally-night-64x64.jpg',
-          bio: 'Sally is the sweetheart child star in her first grown-up role.'
-        }
-      ],
-      user: {
-        id: 1,
-        username: 'gmtester'
-      }
+      castMembers: this.props.initialCastMembers,
+      user: this.props.initialUser
     };
   },
 
   render: function() {
     return (
       <div className="container">
-        <Header />
+        <Header user={this.state.user} />
         <Jumbotron />
         <div className="panel panel-default">
           <div className="panel-heading">
@@ -48,8 +30,4 @@ const App = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
-
+module.exports = App;

@@ -12,10 +12,18 @@ var App = React.createClass({
     };
   },
 
+  loginAction: function() {
+    this.setState({ user: this.props.initialUser });;
+  },
+
+  logoutAction: function() {
+    this.setState({ user: null });;
+  },
+
   render: function() {
     return (
       <div className="container">
-        <Header user={this.state.user} />
+        <Header user={this.state.user} login={this.loginAction} logout={this.logoutAction} />
         <Jumbotron />
         <div className="panel panel-default">
           <div className="panel-heading">

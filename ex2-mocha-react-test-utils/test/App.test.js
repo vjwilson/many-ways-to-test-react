@@ -98,4 +98,27 @@ describe('App component', function() {
       expect(castMembers).to.have.lengthOf(props.initialCastMembers.length);
     });
   });
+
+  describe('behavior', function() {
+    it('should respond to a logout click', function() {
+      var tree = setup(props);
+
+      var logoutLink = TestUtils.findRenderedDOMComponentWithClass(tree, 'navbar-link');
+
+      TestUtils.Simulate.click(logoutLink);
+
+      expect(tree.state.user).not.to.be.true;
+    });
+
+    it('should respond to a login click', function() {
+      var tree = setup(props);
+
+      var authLink = TestUtils.findRenderedDOMComponentWithClass(tree, 'navbar-link');
+
+      TestUtils.Simulate.click(authLink); // starts logged in, logout first
+
+      TestUtils.Simulate.click(authLink); // now try to log back in
+      expect(tree.state.user).to.be.an('object');
+    });
+  });
 });

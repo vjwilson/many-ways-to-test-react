@@ -2,9 +2,11 @@ var React = require('react');
 
 var Header = React.createClass({
   render: function() {
+    var authLink = this.props.login;
     var authLinkText = 'Login';
     var authMessage = 'Have an account?';
     if (this.props.user && this.props.user.username) {
+      authLink = this.props.logout;
       authLinkText = 'Logout';
       authMessage = 'Welcome, ' + this.props.user.username;
     }
@@ -37,7 +39,7 @@ var Header = React.createClass({
             </form>
             <ul className="nav navbar-nav navbar-right login-block">
               <li className="navbar-text">{authMessage}</li>
-              <li><a href="#" className="navbar-link">{authLinkText}</a></li>
+              <li><a href="#" className="navbar-link" onClick={authLink}>{authLinkText}</a></li>
             </ul>
           </div>
         </div>

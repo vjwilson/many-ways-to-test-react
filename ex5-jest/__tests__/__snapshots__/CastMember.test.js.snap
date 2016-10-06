@@ -1,0 +1,23 @@
+exports[`test CastMember rendered static HTML 1`] = `
+<div
+  className="media">
+  <div
+    className="media-left">
+    <a
+      href="#">
+      <img
+        alt="Testy McTestFace"
+        className="media-object"
+        src="/images/test-image-small.jpg" />
+    </a>
+  </div>
+  <div
+    className="media-body">
+    <h2
+      className="media-heading">
+      Testy McTestFace
+    </h2>
+    This is a test.
+  </div>
+</div>
+`;

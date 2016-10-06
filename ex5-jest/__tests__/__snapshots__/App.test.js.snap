@@ -1,0 +1,174 @@
+exports[`App App rendered static HTML 1`] = `
+<div
+  className="container">
+  <nav
+    className="navbar navbar-default">
+    <div
+      className="container-fluid">
+      <div
+        className="navbar-header">
+        <button
+          aria-expanded="false"
+          className="navbar-toggle collapsed"
+          data-target="#bs-example-navbar-collapse-1"
+          data-toggle="collapse"
+          type="button">
+          <span
+            className="sr-only">
+            Toggle navigation
+          </span>
+          <span
+            className="icon-bar" />
+          <span
+            className="icon-bar" />
+          <span
+            className="icon-bar" />
+        </button>
+        <a
+          className="navbar-brand"
+          href="#">
+          Dogs: The Musical
+        </a>
+      </div>
+      <div
+        className="collapse navbar-collapse"
+        id="bs-example-navbar-collapse-1">
+        <ul
+          className="nav navbar-nav">
+          <li>
+            <a
+              href="#">
+              The Story
+            </a>
+          </li>
+          <li>
+            <a
+              href="#">
+              Cast
+            </a>
+          </li>
+          <li>
+            <a
+              href="#">
+              Director
+            </a>
+          </li>
+          <li>
+            <a
+              href="#">
+              Venue
+            </a>
+          </li>
+        </ul>
+        <form
+          className="navbar-form navbar-right">
+          <div
+            className="form-group">
+            <input
+              className="form-control"
+              placeholder="Search"
+              type="text" />
+          </div>
+          <button
+            className="btn btn-default"
+            type="submit">
+            Go
+          </button>
+        </form>
+        <ul
+          className="nav navbar-nav navbar-right login-block">
+          <li
+            className="navbar-text">
+            Welcome, gmtester
+          </li>
+          <li>
+            <a
+              className="navbar-link"
+              href="#"
+              onClick={[Function]}>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="jumbotron">
+    <div
+      className="ghosted">
+      <h1>
+        Dogs: The Musical
+      </h1>
+      <p>
+        “It’ll have you barking in your seat!”
+      </p>
+      <p>
+        <a
+          className="btn btn-primary"
+          href="#">
+          Buy Tickets
+        </a>
+      </p>
+    </div>
+  </div>
+  <div
+    className="panel panel-default">
+    <div
+      className="panel-heading">
+      <h2
+        className="panel-title">
+        Top-Billed Cast
+      </h2>
+    </div>
+    <div
+      className="panel-body">
+      <div
+        className="member-list">
+        <div
+          className="media">
+          <div
+            className="media-left">
+            <a
+              href="#">
+              <img
+                alt="Yul Brynner"
+                className="media-object"
+                src="/images/yul-brynne-small.jpg" />
+            </a>
+          </div>
+          <div
+            className="media-body">
+            <h2
+              className="media-heading">
+              Yul Brynner
+            </h2>
+            Exotic leading man of American films, famed as much for his completely bald head as for his performances, Yul Brynner masked much of his life in mystery and outright lies designed to tease people he considered gullible.
+          </div>
+        </div>
+        <div
+          className="media">
+          <div
+            className="media-left">
+            <a
+              href="#">
+              <img
+                alt="Deborah Kerr"
+                className="media-object"
+                src="/images/deborah-kerr-small.jpg" />
+            </a>
+          </div>
+          <div
+            className="media-body">
+            <h2
+              className="media-heading">
+              Deborah Kerr
+            </h2>
+            Deborah Kerr was born on 30 September 1921 in Helensburgh, Scotland, the daughter of Captain Arthur Kerr-Trimmer.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

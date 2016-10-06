@@ -1,0 +1,94 @@
+exports[`Header Header rendered static HTML 1`] = `
+<nav
+  className="navbar navbar-default">
+  <div
+    className="container-fluid">
+    <div
+      className="navbar-header">
+      <button
+        aria-expanded="false"
+        className="navbar-toggle collapsed"
+        data-target="#bs-example-navbar-collapse-1"
+        data-toggle="collapse"
+        type="button">
+        <span
+          className="sr-only">
+          Toggle navigation
+        </span>
+        <span
+          className="icon-bar" />
+        <span
+          className="icon-bar" />
+        <span
+          className="icon-bar" />
+      </button>
+      <a
+        className="navbar-brand"
+        href="#">
+        Dogs: The Musical
+      </a>
+    </div>
+    <div
+      className="collapse navbar-collapse"
+      id="bs-example-navbar-collapse-1">
+      <ul
+        className="nav navbar-nav">
+        <li>
+          <a
+            href="#">
+            The Story
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            Cast
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            Director
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            Venue
+          </a>
+        </li>
+      </ul>
+      <form
+        className="navbar-form navbar-right">
+        <div
+          className="form-group">
+          <input
+            className="form-control"
+            placeholder="Search"
+            type="text" />
+        </div>
+        <button
+          className="btn btn-default"
+          type="submit">
+          Go
+        </button>
+      </form>
+      <ul
+        className="nav navbar-nav navbar-right login-block">
+        <li
+          className="navbar-text">
+          Welcome, gmtester
+        </li>
+        <li>
+          <a
+            className="navbar-link"
+            href="#"
+            onClick={[Function]}>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+`;

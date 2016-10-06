@@ -1,0 +1,47 @@
+exports[`CastMemberList CastMemberList rendered static HTML 1`] = `
+<div
+  className="member-list">
+  <div
+    className="media">
+    <div
+      className="media-left">
+      <a
+        href="#">
+        <img
+          alt="Yul Brynner"
+          className="media-object"
+          src="/images/yul-brynne-small.jpg" />
+      </a>
+    </div>
+    <div
+      className="media-body">
+      <h2
+        className="media-heading">
+        Yul Brynner
+      </h2>
+      Exotic leading man of American films, famed as much for his completely bald head as for his performances, Yul Brynner masked much of his life in mystery and outright lies designed to tease people he considered gullible.
+    </div>
+  </div>
+  <div
+    className="media">
+    <div
+      className="media-left">
+      <a
+        href="#">
+        <img
+          alt="Deborah Kerr"
+          className="media-object"
+          src="/images/deborah-kerr-small.jpg" />
+      </a>
+    </div>
+    <div
+      className="media-body">
+      <h2
+        className="media-heading">
+        Deborah Kerr
+      </h2>
+      Deborah Kerr was born on 30 September 1921 in Helensburgh, Scotland, the daughter of Captain Arthur Kerr-Trimmer.
+    </div>
+  </div>
+</div>
+`;

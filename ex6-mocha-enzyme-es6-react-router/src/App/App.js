@@ -6,7 +6,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      user: this.props.route.initialUser
+      user: props.route.initialUser
     };
 
     this.loginAction = this.loginAction.bind(this);
@@ -14,7 +14,9 @@ class App extends React.Component {
   }
 
   loginAction() {
-    this.setState({ user: this.props.route.initialUser });;
+    this.setState({
+      user: this.props.route.initialUser
+    });
   }
 
   logoutAction() {

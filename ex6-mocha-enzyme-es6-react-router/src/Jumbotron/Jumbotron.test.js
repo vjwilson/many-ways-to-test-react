@@ -2,6 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import Jumbotron from './Jumbotron';
+import { Link } from 'react-router';
 
 describe('Jumbotron component', function() {
   it('should render a React component', function() {
@@ -19,8 +20,10 @@ describe('Jumbotron component', function() {
   it('should render a link to buy tickets', function() {
     const mountedOutput = mount(<Jumbotron />);
 
-    const callToAction = mountedOutput.find('.btn-primary'); // get Cheerio wrapper of the HTML string
+    const callToAction = mountedOutput.find(Link);
 
+    expect(callToAction.prop('className')).to.equal('btn btn-primary btn-lg');
+    expect(callToAction.prop('to')).to.equal('/tickets');
     expect(callToAction.text()).to.contain('Buy');
   });
 });

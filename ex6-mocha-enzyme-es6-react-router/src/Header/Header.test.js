@@ -1,15 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import Header from './Header';
 
 describe('Header component', function() {
-  // Technically, this could be declared `const`
-  //   because we're just changing properties on it
-  //   in order to different paths through the code,
-  //   but I think of `const` has implying the underlying
-  //   object won't change, while `let` implies it will change
   let props;
 
   beforeEach(function() {
@@ -47,6 +43,22 @@ describe('Header component', function() {
     const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
 
     expect(shallowOutput.find('.navbar-header')).to.be.ok;
+  });
+
+  it('should have five items in its nav menu', function() {
+    const mountedOutput = mount(<Header {...props} />);
+
+    const ticketLink = mountedOutput.find('.nav-item');
+
+    expect(ticketLink.length).to.equal(5);
+  });
+
+  it('should have a link to buy tickets in the first menu item', function() {
+    const mountedOutput = mount(<Header {...props} />);
+
+    const ticketLink = mountedOutput.find('.nav-item').first().find(Link);
+
+    expect(ticketLink.text()).to.equal('Tickets');
   });
 
   it('should contain a login block', function() {

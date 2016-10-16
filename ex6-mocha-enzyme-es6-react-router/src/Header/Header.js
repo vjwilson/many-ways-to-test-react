@@ -26,11 +26,11 @@ const Header = ({ login, logout, user }) => {
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav">
-            <li><Link to="/tickets">Tickets</Link></li>
-            <li><a href="#">The Story</a></li>
-            <li><a href="#">Cast</a></li>
-            <li><a href="#">Director</a></li>
-            <li><a href="#">Venue</a></li>
+            <li className="nav-item"><Link to="/tickets" className="nav-link" activeClassName="active">Tickets</Link></li>
+            <li className="nav-item"><a href="#">The Story</a></li>
+            <li className="nav-item"><a href="#">Cast</a></li>
+            <li className="nav-item"><a href="#">Director</a></li>
+            <li className="nav-item"><a href="#">Venue</a></li>
           </ul>
           <form className="navbar-form navbar-right">
             <div className="form-group">

@@ -7,13 +7,13 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      castMembers: this.props.route.initialCastMembers.slice(0, 3)
+      castMembers: props.route.initialCastMembers.slice(0, 3)
     };
   }
 
   render() {
     return (
-      <div>
+      <div className="home">
         <Jumbotron />
         <div className="panel panel-default">
           <div className="panel-heading">

@@ -8,48 +8,14 @@ import Jumbotron from '../Jumbotron/Jumbotron';
 import CastMemberList from '../Cast/CastMemberList';
 
 describe('App component', function() {
-  // Technically, this could be declared `const`
-  //   because we're just changing properties on it
-  //   in order to different paths through the code,
-  //   but I think of `const` has implying the underlying
-  //   object won't change, while `let` implies it will change
   let props;
 
-  const mockInitialCastMembers = [
-    {
-      id: 1,
-      name: 'A',
-      imageUrl: 'a.jpg',
-      thumbnailUrl: 'a-small.jpg',
-      bio: 'A is an actor.'
-    },
-    {
-      id: 2,
-      name: 'B',
-      imageUrl: 'b.jpg',
-      thumbnailUrl: 'b-small.jpg',
-      bio: 'B is a supporting actor.'
-    },
-    {
-      id: 3,
-      name: 'C',
-      imageUrl: 'c.jpg',
-      thumbnailUrl: 'c-small.jpg',
-      bio: 'C is an understudy.'
-    },
-    {
-      id: 4,
-      name: 'D',
-      imageUrl: 'd.jpg',
-      thumbnailUrl: 'd-small.jpg',
-      bio: 'D is an unnamed extra.'
-    }
-  ];
   const mockInitialUser = {
     id: 9,
     username: 'gmtester'
   };
 
+  // WUT? believe it or not, this works with shallow()
   const mockChildren = (<div className="foo">Bar</div>);
 
   describe('when there is no user or castMembers', function() {
@@ -62,10 +28,7 @@ describe('App component', function() {
       };
     });
 
-    it('should render the static component', function() {
-      // sanity-check test
-      // does it "render without exploding"?
-      // see: https://gist.github.com/thevangelist/e2002bc6b9834def92d46e4d92f15874
+    it('should render the component (smoke test)', function() {
 
       const shallowOutput = shallow(<App {...props} />);
 

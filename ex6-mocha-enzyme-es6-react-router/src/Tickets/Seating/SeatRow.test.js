@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme';
 import SeatRow from './SeatRow';
 import Seat from './Seat';
 
-describe.only('SeatRow component', function() {
+describe('SeatRow component', function() {
   let row;
 
   beforeEach(function() {

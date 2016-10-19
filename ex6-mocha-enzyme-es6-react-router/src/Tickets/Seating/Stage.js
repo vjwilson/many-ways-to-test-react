@@ -4,7 +4,7 @@ const renderStagePath = (width, height) => {
   const stagePath = `M 0 0 L 0 ${height} L ${width} ${height} L ${width} 0`;
 
   return (
-    <path d={stagePath} fill="#ffffff" stroke="#000000" />
+    <path d={stagePath} fill="transparent" stroke="#000000" />
   )
 };
 

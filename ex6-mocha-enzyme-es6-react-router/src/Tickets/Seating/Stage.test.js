@@ -1,9 +1,9 @@
 import React from 'react';
 import { expect } from 'chai';
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import Stage from './Stage';
 
-describe'Stage component', function() {
+describe('Stage component', function() {
   it('should render a seating chart', function() {
     const shallowRender = shallow(
       <Stage />
@@ -57,6 +57,7 @@ describe'Stage component', function() {
     const text = shallowRender.find('text');
 
     expect(text).to.have.lengthOf(1);
+    expect(text.prop('fill')).to.equal('#000000');
     expect(text.text()).to.equal('Stage');
   });
 });

@@ -1,9 +1,10 @@
 import React from 'react';
 import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import BuyTicketsPage from './BuyTicketsPage';
 import SeatingChart from './Seating/SeatingChart';
+import TicketForm from './TicketForm';
 
 describe('BuyTicketsPage component', function() {
   let routeObject;
@@ -47,6 +48,15 @@ describe('BuyTicketsPage component', function() {
 
       expect(seatingChart).to.have.lengthOf(1);
       expect(seatingChart.props()).to.contain.keys(['width', 'height', 'onClick', 'seatData']);
+    });
+
+    it('should include a ticket form', function() {
+      const shallowOutput = shallow(<BuyTicketsPage route={routeObject} />);
+
+      const ticketForm = shallowOutput.find(TicketForm)
+
+      expect(ticketForm).to.have.lengthOf(1);
+      expect(ticketForm.props()).to.contain.keys(['package']);
     });
   });
 

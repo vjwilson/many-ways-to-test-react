@@ -1,5 +1,6 @@
 import React from 'react';
 import SeatingChart from './Seating/SeatingChart';
+import TicketForm from './TicketForm';
 
 class BuyTicketsPage extends React.Component {
 
@@ -14,6 +15,7 @@ class BuyTicketsPage extends React.Component {
     };
 
     this.updateSeatStatus = this.updateSeatStatus.bind(this);
+    this.buyTickets = this.buyTickets.bind(this);
   }
 
   updateSeatStatus(seatNumber) {
@@ -46,6 +48,29 @@ class BuyTicketsPage extends React.Component {
     }
   }
 
+  buyTickets(event) {
+    event.preventDefault();
+
+    if (this.state.ticketPackage.seats.length) {
+      for (let i = 0, len = this.state.seatData.length; i < len; i++) {
+        this.state.seatData[i].forEach((seat) => {
+          if (seat.selected) {
+            seat.selected = false;
+            seat.sold = true;
+          }
+        });
+      }
+
+      this.setState({
+        seatData: this.state.seatData,
+        ticketPackage: {
+          seats: []
+        }
+      });
+
+    }
+  }
+
   render() {
     return (
       <div className="tickets text-center">
@@ -53,6 +78,7 @@ class BuyTicketsPage extends React.Component {
           <h1>Buy Tickets <small>Select the seats you wish to purchase below.</small></h1>
         </div>
         <SeatingChart onClick={this.updateSeatStatus} seatData={this.state.seatData} width={1024} height={640} />
+        <TicketForm package={this.state.ticketPackage} buy={this.buyTickets} />
       </div>
     );
   }

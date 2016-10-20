@@ -18,7 +18,7 @@ describe('App component', function() {
   // WUT? believe it or not, this works with shallow()
   const mockChildren = (<div className="foo">Bar</div>);
 
-  describe('when there is no user or castMembers', function() {
+  describe('when there is no user', function() {
     beforeEach(function() {
       props = {
         route: {
@@ -54,7 +54,7 @@ describe('App component', function() {
     });
   });
 
-  describe('when there are an initial user and castMembers', function() {
+  describe('when there are an initial user', function() {
     beforeEach(function() {
       props = {
         route: {

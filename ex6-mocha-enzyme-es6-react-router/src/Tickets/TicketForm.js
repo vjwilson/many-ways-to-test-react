@@ -29,7 +29,7 @@ export default class TicketForm extends React.Component {
 
     return (
       <form className="ticket-form" onSubmit={this.handleSubmit}>
-        <table className="ticket-form__table">
+        <table className="table ticket-form__table">
           <thead>
             <tr>
               <th>&nbsp;</th>
@@ -40,11 +40,11 @@ export default class TicketForm extends React.Component {
           <tbody>
             {seatList}
           </tbody>
-          <tfoot>
+          <tfoot className="ticket-form__footer">
             <tr>
               <th>Total Price</th>
-              <td>{this.props.package.seats.length}</td>
-              <td>$ {totalPrice}</td>
+              <td className="ticket-form__total-seats">{this.props.package.seats.length}</td>
+              <td className="ticket-form__total-price">$ {totalPrice}</td>
             </tr>
           </tfoot>
         </table>

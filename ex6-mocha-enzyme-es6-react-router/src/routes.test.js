@@ -8,7 +8,7 @@ import HomePage from './Home/HomePage';
 import BuyTicketsPage from './Tickets/BuyTicketsPage';
 import Stage from './Tickets/Seating/Stage';
 
-describe.only('routes', () => {
+describe('routes', () => {
 
   describe('Home page', () => {
     const historyHome = createMemoryHistory('/');

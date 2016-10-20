@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import TicketForm from './TicketForm';
+import mockSeatData from '../../test/fixtures/mockSeatData';
 
 describe('TicketForm component', function() {
   let mockPackage;
@@ -37,6 +38,59 @@ describe('TicketForm component', function() {
 
       expect(totalLine).to.have.lengthOf(1);
       expect(totalLine.text()).to.contain('Total');
+    });
+
+    it('should include include a submit button', function() {
+      const shallowOutput = shallow(<TicketForm package={mockPackage} />);
+
+      const submitBtn = shallowOutput.find('button[type="submit"]')
+
+      expect(submitBtn).to.have.lengthOf(1);
+      expect(submitBtn.hasClass('btn-primary')).to.be.true;
+    });
+
+    it('should disable the submit button when no seats are selected', function() {
+      const shallowOutput = shallow(<TicketForm package={mockPackage} />);
+
+      const submitBtn = shallowOutput.find('button[type="submit"]')
+
+      expect(submitBtn.prop('disabled')).to.be.true;
+    });
+
+    it('should enable the submit button when seats are selected', function() {
+      mockPackage.seats = mockSeatData[2].slice(2);
+
+      const shallowOutput = shallow(<TicketForm package={mockPackage} />);
+
+      const submitBtn = shallowOutput.find('button[type="submit"]')
+
+      expect(submitBtn.prop('disabled')).not.to.be.true;
+    });
+
+    it('should show zero seats and zero price when no seats are selected', function() {
+      const shallowOutput = shallow(<TicketForm package={mockPackage} />);
+
+      const totalSeats = shallowOutput.find('.ticket-form__total-seats')
+      const totalPrice = shallowOutput.find('.ticket-form__total-price')
+
+      expect(totalSeats.text()).to.equal('0');
+      expect(totalPrice.text()).to.equal('$ 0');
+    });
+
+    it('should show total seats and price when seats are selected', function() {
+      const seatCount = 2;
+      mockPackage.seats = mockSeatData[2].slice(0, seatCount);
+
+      const seatPrice = mockPackage.seats.map( el => el.price )
+                                         .reduce( (a, b) => a + b );
+
+      const shallowOutput = shallow(<TicketForm package={mockPackage} />);
+
+      const totalSeats = shallowOutput.find('.ticket-form__total-seats')
+      const totalPrice = shallowOutput.find('.ticket-form__total-price')
+
+      expect(totalSeats.text()).to.equal(`${seatCount}`);
+      expect(totalPrice.text()).to.equal(`$ ${seatPrice}`);
     });
   });
 

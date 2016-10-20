@@ -27,3 +27,7 @@
   margin: 1em auto;
   width: 320px;
 }
+
+.ticket-form__footer {
+  font-weight: bold;
+}

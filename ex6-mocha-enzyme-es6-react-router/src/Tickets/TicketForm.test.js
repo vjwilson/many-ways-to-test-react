@@ -58,7 +58,7 @@ describe('TicketForm component', function() {
     });
 
     it('should enable the submit button when seats are selected', function() {
-      mockPackage.seats = mockSeatData[2].slice(2);
+      mockPackage.seats = mockSeatData[2].slice(0, 2);
 
       const shallowOutput = shallow(<TicketForm package={mockPackage} />);
 
@@ -95,6 +95,25 @@ describe('TicketForm component', function() {
   });
 
   describe('TicketForm component actions', function() {
+    it('should pass down a supplied function which get called when form is submitted', function() {
+      mockPackage.seats = mockSeatData[2].slice(0, 1);
+      const buyTickets = sinon.spy();
 
+      const formOutput = mount(<TicketForm package={mockPackage} buy={buyTickets} />);
+
+      /**
+       * You would think the following would work, but it doesn't,
+       * because `simulate` doesn't really click a button,
+       * it just fires an event programmatically, and a fake DOM won't
+       * bubble the event up to the enclosing form
+       *
+          const submitBtn = mountedOutput.find('button[type="submit"]')
+          submitBtn.simulate('click');
+          expect(buyTickets.calledOnce).to.equal(true);
+       */
+
+      formOutput.simulate('submit');
+      expect(buyTickets.calledOnce).to.equal(true);
+    });
   });
 });

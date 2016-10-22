@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import userReducer from './userReducer';
+import * as actions from '../actions/userActions';
 
 describe('User reducer', function() {
   it('should login a user with valid username/password', function() {

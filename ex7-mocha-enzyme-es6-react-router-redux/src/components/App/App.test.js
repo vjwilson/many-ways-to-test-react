@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 import sinon from 'sinon';
-import App from './App';
+import { App } from './App';
 import Header from '../Header/Header';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import CastMemberList from '../Cast/CastMemberList';

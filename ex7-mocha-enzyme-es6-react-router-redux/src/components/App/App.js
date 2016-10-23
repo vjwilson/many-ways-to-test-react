@@ -1,13 +1,10 @@
 import React, {PropTypes} from 'react';
 import Header from '../Header/Header';
+import {connect} from 'react-redux';
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      user: props.route.initialUser
-    };
 
     this.loginAction = this.loginAction.bind(this);
     this.logoutAction = this.logoutAction.bind(this);
@@ -26,7 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Header user={this.state.user} login={this.loginAction} logout={this.logoutAction} />
+        <Header user={this.props.user} login={this.loginAction} logout={this.logoutAction} />
         {this.props.children}
       </div>
     );
@@ -35,8 +32,14 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  route: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired
 
 };
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(App);

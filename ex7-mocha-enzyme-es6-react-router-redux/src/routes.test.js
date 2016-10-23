@@ -3,9 +3,9 @@ import { Router, createMemoryHistory } from 'react-router';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import routes from './routes';
-import App from './components/App/App';
-import HomePage from './components/Home/HomePage';
-import BuyTicketsPage from './components/Tickets/BuyTicketsPage';
+import { App } from './components/App/App';
+import { HomePage } from './components/Home/HomePage';
+import { BuyTicketsPage } from './components/Tickets/BuyTicketsPage';
 import Stage from './components/Tickets/Seating/Stage';
 
 describe('routes', () => {

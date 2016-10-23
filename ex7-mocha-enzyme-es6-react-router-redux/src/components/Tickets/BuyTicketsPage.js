@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import SeatingChart from './Seating/SeatingChart';
 import TicketForm from './TicketForm';
 
-class BuyTicketsPage extends React.Component {
+export class BuyTicketsPage extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      seatData: this.props.route.initialSeatData,
+      seatData: this.props.seats,
       ticketPackage: {
         seats: []
       }
@@ -77,7 +78,7 @@ class BuyTicketsPage extends React.Component {
         <div className="page-header">
           <h1>Buy Tickets <small>Select the seats you wish to purchase below.</small></h1>
         </div>
-        <SeatingChart onClick={this.updateSeatStatus} seatData={this.state.seatData} width={1024} height={640} />
+        <SeatingChart onClick={this.updateSeatStatus} seatData={this.state.seatData} width={1024} height={600} />
         <TicketForm package={this.state.ticketPackage} buy={this.buyTickets} />
       </div>
     );
@@ -88,4 +89,10 @@ BuyTicketsPage.propTypes = {
   route: React.PropTypes.object.isRequired
 };
 
-export default BuyTicketsPage;
+function mapStateToProps(state) {
+  return {
+    seats: state.seats
+  };
+}
+
+export default connect(mapStateToProps)(BuyTicketsPage);

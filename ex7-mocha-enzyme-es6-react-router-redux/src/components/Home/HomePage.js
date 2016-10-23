@@ -1,14 +1,11 @@
 import React, {PropTypes} from 'react';
+import { connect } from 'react-redux';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import CastMemberList from '../Cast/CastMemberList';
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      castMembers: props.route.initialCastMembers.slice(0, 3)
-    };
   }
 
   render() {
@@ -20,7 +17,7 @@ class HomePage extends React.Component {
             <h2 className="panel-title">Top-Billed Cast</h2>
           </div>
           <div className="panel-body">
-            <CastMemberList members={this.state.castMembers} />
+            <CastMemberList members={this.props.castMembers} />
           </div>
         </div>
       </div>
@@ -28,4 +25,10 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+function mapStateToProps(state) {
+  return {
+    castMembers: state.castMembers
+  };
+}
+
+export default connect(mapStateToProps)(HomePage);

@@ -2,30 +2,30 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
-import BuyTicketsPage from './BuyTicketsPage';
+import  { BuyTicketsPage } from './BuyTicketsPage';
 import SeatingChart from './Seating/SeatingChart';
 import TicketForm from './TicketForm';
 import mockSeatData from '../../../test/fixtures/mockSeatData';
 
 describe('BuyTicketsPage component', function() {
-  let routeObject;
+  let props;
 
   beforeEach(function() {
-    routeObject = {
-      initialSeatData: []
+    props = {
+      seats: []
     };
   });
 
   describe('rendering', function() {
     it('should render the component (smoke test)', function() {
 
-      const shallowOutput = shallow(<BuyTicketsPage route={routeObject} />);
+      const shallowOutput = shallow(<BuyTicketsPage {...props} />);
 
       expect(shallowOutput).to.have.length(1);
     });
 
     it('should render an element with correct classes', function() {
-      const shallowOutput = shallow(<BuyTicketsPage route={routeObject} />);
+      const shallowOutput = shallow(<BuyTicketsPage {...props} />);
 
       expect(shallowOutput.hasClass('text-center')).to.be.true;
     });
@@ -33,7 +33,7 @@ describe('BuyTicketsPage component', function() {
 
   describe('child components', function() {
     it('should include a page header', function() {
-      const shallowOutput = shallow(<BuyTicketsPage route={routeObject} />);
+      const shallowOutput = shallow(<BuyTicketsPage {...props} />);
 
       const pageHeader = shallowOutput.find('.page-header')
 
@@ -42,7 +42,7 @@ describe('BuyTicketsPage component', function() {
     });
 
     it('should include a seating chart', function() {
-      const shallowOutput = shallow(<BuyTicketsPage route={routeObject} />);
+      const shallowOutput = shallow(<BuyTicketsPage {...props} />);
 
       const seatingChart = shallowOutput.find(SeatingChart)
 
@@ -51,7 +51,7 @@ describe('BuyTicketsPage component', function() {
     });
 
     it('should include a ticket form', function() {
-      const shallowOutput = shallow(<BuyTicketsPage route={routeObject} />);
+      const shallowOutput = shallow(<BuyTicketsPage {...props} />);
 
       const ticketForm = shallowOutput.find(TicketForm)
 
@@ -62,12 +62,12 @@ describe('BuyTicketsPage component', function() {
 
   describe('BuyTicketsPage component actions', function() {
     it('should handle a form submission from its TicketForm component (manual test)', function() {
-      routeObject.initialSeatData = JSON.parse(JSON.stringify(mockSeatData));
+      props.seats = JSON.parse(JSON.stringify(mockSeatData));
 
-      const buyTicketsPage = mount(<BuyTicketsPage route={routeObject} />);
+      const buyTicketsPage = mount(<BuyTicketsPage {...props} />);
 
       // manually set the state of selected seats and the package to buy
-      let seatsToSelect = routeObject.initialSeatData[2].slice(0, 2);
+      let seatsToSelect = props.seats[2].slice(0, 2);
       seatsToSelect[0].selected = true;
       seatsToSelect[1].selected = true;
 
@@ -90,9 +90,9 @@ describe('BuyTicketsPage component', function() {
     });
 
     it('should handle a form submission from its TicketForm component (automatic test)', function() {
-      routeObject.initialSeatData = JSON.parse(JSON.stringify(mockSeatData));
+      props.seats = JSON.parse(JSON.stringify(mockSeatData));
 
-      const buyTicketsPage = mount(<BuyTicketsPage route={routeObject} />);
+      const buyTicketsPage = mount(<BuyTicketsPage {...props} />);
 
       // automatically set the state of selected seats and the package to buy
       const pageInstance = buyTicketsPage.instance();
@@ -113,9 +113,9 @@ describe('BuyTicketsPage component', function() {
     });
 
     it('should handle selecting a seat from its seating chart component (the right way, using the component API)', function() {
-      routeObject.initialSeatData = JSON.parse(JSON.stringify(mockSeatData));
+      props.seats = JSON.parse(JSON.stringify(mockSeatData));
 
-      const buyTicketsPage = mount(<BuyTicketsPage route={routeObject} />);
+      const buyTicketsPage = mount(<BuyTicketsPage {...props} />);
 
 
       // find the elements to act upon
@@ -136,9 +136,9 @@ describe('BuyTicketsPage component', function() {
     });
 
     it('should handle deselecting a seat from its seating chart component (the right way, using the component API)', function() {
-      routeObject.initialSeatData = JSON.parse(JSON.stringify(mockSeatData));
+      props.seats = JSON.parse(JSON.stringify(mockSeatData));
 
-      const buyTicketsPage = mount(<BuyTicketsPage route={routeObject} />);
+      const buyTicketsPage = mount(<BuyTicketsPage {...props} />);
 
       // find the elements to act upon
       const seatC1 = buyTicketsPage.findWhere(n => n.prop('sold') === false && n.text() === 'C1');
@@ -161,9 +161,9 @@ describe('BuyTicketsPage component', function() {
     });
 
     it('should handle selecting seats and checking out (the right way, using the component API)', function() {
-      routeObject.initialSeatData = JSON.parse(JSON.stringify(mockSeatData));
+      props.seats = JSON.parse(JSON.stringify(mockSeatData));
 
-      const buyTicketsPage = mount(<BuyTicketsPage route={routeObject} />);
+      const buyTicketsPage = mount(<BuyTicketsPage {...props} />);
 
 
       // find the elements to act upon

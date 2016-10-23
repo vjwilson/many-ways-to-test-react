@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 import sinon from 'sinon';
-import HomePage from './HomePage';
+import { HomePage } from './HomePage';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import CastMemberList from '../Cast/CastMemberList';
 
@@ -44,10 +44,8 @@ describe('HomePage component', function() {
   describe('rendering', function() {
     beforeEach(function() {
       props = {
-        route: {
-          initialCastMembers: mockInitialCastMembers
-        }
-      };
+        castMembers: mockInitialCastMembers
+      }
     });
 
     it('should render the component (smoke test)', function() {
@@ -67,10 +65,8 @@ describe('HomePage component', function() {
   describe('child components', function() {
     beforeEach(function() {
       props = {
-        route: {
-          initialCastMembers: mockInitialCastMembers
-        }
-      };
+        castMembers: mockInitialCastMembers
+      }
     });
 
     it('should have approriate children', function() {
@@ -79,9 +75,5 @@ describe('HomePage component', function() {
       expect(shallowOutput.find(Jumbotron)).to.be.an('object');
       expect(shallowOutput.find(CastMemberList)).to.be.an('object');
     });
-  });
-
-  describe('HomePage component actions', function() {
-
   });
 });

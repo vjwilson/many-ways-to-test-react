@@ -1,10 +1,12 @@
 import {combineReducers} from 'redux';
-import user from './userReducer';
+import castMembers from './castMembersReducer';
 import seats from './seatsReducer';
+import user from './userReducer';
 
 const rootReducer = combineReducers({
-  user,
-  seats
+  castMembers,
+  seats,
+  user
 });
 
 export default rootReducer;

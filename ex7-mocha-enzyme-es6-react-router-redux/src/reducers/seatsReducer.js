@@ -1,6 +1,7 @@
 import * as types from '../actions/actionTypes';
+import initialState from './initialState';
 
-export default function seatsReducer(state = [], action) {
+export default function seatsReducer(state = initialState.seats, action) {
   let newState;
 
   switch(action.type) {

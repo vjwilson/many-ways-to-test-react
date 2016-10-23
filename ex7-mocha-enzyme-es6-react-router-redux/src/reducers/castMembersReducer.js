@@ -1,6 +1,7 @@
 import * as types from '../actions/actionTypes';
+import initialState from './initialState';
 
-export default function castMembersReducer(state = [], action) {
+export default function castMembersReducer(state = initialState.castMembers, action) {
   let newState;
 
   switch(action.type) {

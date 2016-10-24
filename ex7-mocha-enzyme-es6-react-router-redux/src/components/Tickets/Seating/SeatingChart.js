@@ -10,7 +10,7 @@ export default class SeatingChart extends React.Component {
 
     const seatRows = this.props.seatData.map((row, index) => {
       let currentOffsetY = startOffsetY + (index * 80);
-      return (<SeatRow key={index} row={row} offsetX={startOffsetX} offsetY={currentOffsetY} onClick={this.props.onClick} />);
+      return (<SeatRow key={index} row={row} offsetX={startOffsetX} offsetY={currentOffsetY} onSeatClick={this.props.onSeatClick} />);
     });
 
     return (
@@ -26,7 +26,8 @@ SeatingChart.propTypes = {
   seatData: React.PropTypes.array.isRequired,
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
-  onClick: React.PropTypes.func
+  onClick: React.PropTypes.func,
+  onSeatClick: React.PropTypes.func
 };
 
 SeatingChart.defaultProps = {

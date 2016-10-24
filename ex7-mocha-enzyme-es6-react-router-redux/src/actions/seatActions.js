@@ -1,55 +1,23 @@
 import * as types from './actionTypes';
 
 // action functions
-export function loadSeatsSuccess(seats) {
+export function loadSeats(seats) {
   return {
-    type: types.LOAD_SEATS_SUCCESS,
+    type: types.LOAD_SEATS,
     seats: seats
   };
 }
 
-export function selectSeatSuccess(seatNumber) {
+export function toggleSeatSelected(seat) {
   return {
-    type: types.SELECT_SEAT_SUCCESS,
-    seatNumber: seatNumber
+    type: types.TOGGLE_SEAT_SELECTED,
+    seat: seat
   };
 }
 
-export function deselectSeatSuccess(seatNumber) {
+export function markSeatSold(seat) {
   return {
-    type: types.DESELECT_SEAT_SUCCESS,
-    seatNumber: seatNumber
-  };
-}
-
-export function markSeatSoldSuccess(seatNumber) {
-  return {
-    type: types.MARK_SEAT_SOLD_SUCCESS,
-    seatNumber: seatNumber
-  };
-}
-
-// dispatch functions
-export function loadSeats() {
-  return function(dispatch) {
-    dispatch(selectSeatSuccess(seatNumber));
-  };
-}
-
-export function selectSeat(seatNumber) {
-  return function(dispatch) {
-    dispatch(selectSeatSuccess(seatNumber));
-  };
-}
-
-export function deselectSeat(seatNumber) {
-  return function(dispatch) {
-    dispatch(deselectSeatSuccess(seatNumber));
-  };
-}
-
-export function markSeatSold(seatNumber) {
-  return function(dispatch) {
-    dispatch(markSeatSoldSuccess(seatNumber));
+    type: types.MARK_SEAT_SOLD,
+    seat: seat
   };
 }

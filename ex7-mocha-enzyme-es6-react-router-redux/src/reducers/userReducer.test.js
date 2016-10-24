@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import userReducer from './userReducer';
-import * as actions from '../actions/userActions';
+import * as types from '../actions/actionTypes';
 
 describe('User reducer', function() {
   it('should login a user with valid username/password', function() {
@@ -10,7 +10,7 @@ describe('User reducer', function() {
       username: 'annieleonhart'
     };
     const action = {
-      type: 'LOGIN_USER_SUCCESS',
+      type: types.LOGIN_USER,
       user: newUser
     };
 
@@ -25,7 +25,7 @@ describe('User reducer', function() {
       username: 'erenyeager'
     };
     const action = {
-      type: 'LOGOUT_USER_SUCCESS'
+      type: types.LOGOUT_USER
     };
 
     const newState = userReducer(initialState, action);

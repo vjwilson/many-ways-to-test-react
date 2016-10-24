@@ -1,20 +1,20 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function seatsReducer(state = initialState.seats, action) {
+export default function seatReducer(state = initialState.seats, action) {
   let newState;
 
   switch(action.type) {
-    case types.LOAD_SEATS_SUCCESS:
+    case types.LOAD_SEATS:
       return action.seats;
       break;
 
-    case types.SELECT_SEAT_SUCCESS:
+    case types.TOGGLE_SEAT_SELECTED:
       newState = state.map((row) => {
         return row.map((seat) => {
-          if (seat.seatNumber === action.seatNumber) {
+          if (seat.seatNumber === action.seat.seatNumber) {
             const updatedSeat = Object.assign({}, seat);
-            updatedSeat.selected = true;
+            updatedSeat.selected = !updatedSeat.selected;
             return updatedSeat;
           } else {
             return seat;
@@ -24,25 +24,10 @@ export default function seatsReducer(state = initialState.seats, action) {
       return newState;
       break;
 
-    case types.DESELECT_SEAT_SUCCESS:
+    case types.MARK_SEAT_SOLD:
       newState = state.map((row) => {
         return row.map((seat) => {
-          if (seat.seatNumber === action.seatNumber) {
-            const updatedSeat = Object.assign({}, seat);
-            updatedSeat.selected = false;
-            return updatedSeat;
-          } else {
-            return seat;
-          }
-        });
-      });
-      return newState;
-      break;
-
-    case types.MARK_SEAT_SOLD_SUCCESS:
-      newState = state.map((row) => {
-        return row.map((seat) => {
-          if (seat.seatNumber === action.seatNumber) {
+          if (seat.seatNumber === action.seat.seatNumber) {
             const updatedSeat = Object.assign({}, seat);
             updatedSeat.sold = true;
             return updatedSeat;

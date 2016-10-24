@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import CastMemberList from '../Cast/CastMemberList';
 
-describe('App component', function() {
+describe.only('App component', function() {
   let props;
 
   const mockInitialUser = {
@@ -21,9 +21,7 @@ describe('App component', function() {
   describe('when there is no user', function() {
     beforeEach(function() {
       props = {
-        route: {
-          initialUser: null
-        },
+        user: {},
         children: mockChildren
       };
     });
@@ -44,7 +42,7 @@ describe('App component', function() {
     it('should have state that matches the intial Props', function() {
       const shallowOutput = shallow(<App {...props} />);
 
-      expect(shallowOutput.state().user).to.be.null;
+      expect(shallowOutput.prop('user')).to.deep.equal({});
     });
 
     it('should have a section for its children', function() {
@@ -57,17 +55,15 @@ describe('App component', function() {
   describe('when there are an initial user', function() {
     beforeEach(function() {
       props = {
-        route: {
-          initialUser: mockInitialUser
-        },
+        user: mockInitialUser,
         children: mockChildren
       };
     });
 
-    it('should have the initial user in the state', function() {
+    it('should have the initial user prop', function() {
       const shallowOutput = shallow(<App {...props} />);
 
-      expect(shallowOutput.state().user).to.deep.equal(mockInitialUser);
+      expect(shallowOutput.prop('user')).to.deep.equal(mockInitialUser);
     });
   });
 
@@ -92,9 +88,7 @@ describe('App component', function() {
   describe('App component actions', function() {
     beforeEach(function() {
       props = {
-        route: {
-          initialUser: mockInitialUser
-        },
+        user: mockInitialUser,
         children: mockChildren
       };
     });

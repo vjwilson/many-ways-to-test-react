@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import castMembers from './castMembersReducer';
-import seats from './seatsReducer';
+import seats from './seatReducer';
 import user from './userReducer';
 
 const rootReducer = combineReducers({

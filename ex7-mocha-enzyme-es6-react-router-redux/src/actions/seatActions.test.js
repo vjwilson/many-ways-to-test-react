@@ -4,55 +4,47 @@ import * as types from './actionTypes';
 import mockSeatData from '../../test/fixtures/mockSeatData';
 
 describe('Seat Actions', () => {
-  it('should create an action for loading seats', function() {
-    const seats = mockSeatData;
+  let seats;
 
+  beforeEach(function() {
+    seats = JSON.parse(JSON.stringify(mockSeatData));
+  });
+
+  it('should create an action for loading seats', function() {
     const expectedAction = {
-      type: types.LOAD_SEATS_SUCCESS,
+      type: types.LOAD_SEATS,
       seats: seats
     };
 
-    const action = seatActions.loadSeatsSuccess(seats);
+    const action = seatActions.loadSeats(seats);
 
     expect(action).to.eql(expectedAction);
   });
 
   it('should create an action for selecting a seat', function() {
-    const seatNumber = 'A3';
+    const seat = seats[0][2]; // mock seat A3
 
     const expectedAction = {
-      type: types.SELECT_SEAT_SUCCESS,
-      seatNumber: seatNumber
+      type: types.TOGGLE_SEAT_SELECTED,
+      seat: seat
     };
 
-    const action = seatActions.selectSeatSuccess(seatNumber);
-
-    expect(action).to.eql(expectedAction);
-  });
-
-  it('should create an action for deselecting a seat', function() {
-    const seatNumber = 'A4';
-
-    const expectedAction = {
-      type: types.DESELECT_SEAT_SUCCESS,
-      seatNumber: seatNumber
-    };
-
-    const action = seatActions.deselectSeatSuccess(seatNumber);
+    const action = seatActions.toggleSeatSelected(seat);
 
     expect(action).to.eql(expectedAction);
   });
 
   it('should create an action for marking a seat as sold', function() {
-    const seatNumber = 'A3';
+    const seat = seats[0][2]; // mock seat A3
 
     const expectedAction = {
-      type: types.MARK_SEAT_SOLD_SUCCESS,
-      seatNumber: seatNumber
+      type: types.MARK_SEAT_SOLD,
+      seat: seat
     };
 
-    const action = seatActions.markSeatSoldSuccess(seatNumber);
+    const action = seatActions.markSeatSold(seat);
 
     expect(action).to.eql(expectedAction);
   });
 });
+

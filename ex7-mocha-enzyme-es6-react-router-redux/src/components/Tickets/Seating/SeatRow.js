@@ -22,10 +22,8 @@ export default class SeatRow extends React.Component {
           key={seat.seatNumber}
           offsetX={savedOffsetX}
           offsetY={currentRowOffset}
-          seatNumber={seat.seatNumber}
-          sold={seat.sold}
-          selected={seat.selected}
-          onClick={this.props.onClick}
+          seat={seat}
+          onSeatClick={this.props.onSeatClick}
         />
       )
     });
@@ -48,7 +46,7 @@ SeatRow.propTypes = {
   row: React.PropTypes.array.isRequired,
   offsetX: React.PropTypes.number.isRequired,
   offsetY: React.PropTypes.number.isRequired,
-  onClick: React.PropTypes.func
+  onSeatClick: React.PropTypes.func
 };
 
 SeatRow.defaultProps = {

@@ -9,7 +9,9 @@ export default class Seat extends React.Component {
   }
 
   handleClick() {
-    this.props.onClick(this.props.seatNumber);
+    if (!this.props.seat.sold) {
+      this.props.onSeatClick(this.props.seat);
+    }
   }
 
   drawSeat() {
@@ -46,10 +48,10 @@ export default class Seat extends React.Component {
     let currentColor;
     let fillColor;
 
-    if (this.props.sold) {
+    if (this.props.seat.sold) {
       currentColor = "#999999";
       fillColor = "#f1f1f1";
-    } else if (this.props.selected) {
+    } else if (this.props.seat.selected) {
       currentColor = "#ffffff";
       fillColor = '#f10030';
     } else {
@@ -75,7 +77,7 @@ export default class Seat extends React.Component {
           strokeWidth={1}
           fill={fillColor}
         />
-        <text textAnchor="middle" x={textOffsetX} y={textOffsetY} fill={currentColor}>{this.props.seatNumber}</text>
+        <text textAnchor="middle" x={textOffsetX} y={textOffsetY} fill={currentColor}>{this.props.seat.seatNumber}</text>
       </g>
     )
   }
@@ -86,10 +88,8 @@ Seat.propTypes = {
   width: React.PropTypes.number.isRequired,
   offsetX: React.PropTypes.number.isRequired,
   offsetY: React.PropTypes.number.isRequired,
-  seatNumber: React.PropTypes.string,
-  sold: React.PropTypes.bool,
-  selected: React.PropTypes.bool,
-  onClick: React.PropTypes.func
+  seat: React.PropTypes.object.isRequired,
+  onSeatClick: React.PropTypes.func
 };
 
 Seat.defaultProps = {
@@ -97,5 +97,5 @@ Seat.defaultProps = {
   width: 35,
   offsetX: 0,
   offsetY: 0,
-  seatNumber: ''
+  seat: {}
 };

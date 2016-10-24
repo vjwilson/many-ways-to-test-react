@@ -5,7 +5,7 @@ export default function castMembersReducer(state = initialState.castMembers, act
   let newState;
 
   switch(action.type) {
-    case types.LOAD_CAST_MEMBERS_SUCCESS:
+    case types.LOAD_CAST_MEMBERS:
       return action.castMembers;
       break;
 

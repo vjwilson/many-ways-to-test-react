@@ -113,20 +113,20 @@ describe('SeatRow component', function() {
       const shallowOutput = shallow(
         <SeatRow
           row={row}
-          onClick={clickHandler}
+          onSeatClick={clickHandler}
         />
       );
 
       const seats = shallowOutput.find(Seat);
 
-      expect(seats.everyWhere(s => s.prop('onClick') == clickHandler)).to.be.true;
+      expect(seats.everyWhere(s => s.prop('onSeatClick') == clickHandler)).to.be.true;
     });
 
     it('should accept a click handler call from its children', function() {
       const mountedOutput = mount(
         <SeatRow
           row={row}
-          onClick={clickHandler}
+          onSeatClick={clickHandler}
         />
       );
 
@@ -136,7 +136,6 @@ describe('SeatRow component', function() {
       lastSeat.simulate('click');
 
       expect(clickHandler.calledOnce).to.be.true;
-      expect(clickHandler.calledWith(seatNumber)).to.be.true;
     });
   });
 });

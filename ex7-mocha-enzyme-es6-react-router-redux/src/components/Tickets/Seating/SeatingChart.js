@@ -26,7 +26,6 @@ SeatingChart.propTypes = {
   seatData: React.PropTypes.array.isRequired,
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
-  onClick: React.PropTypes.func,
   onSeatClick: React.PropTypes.func
 };
 

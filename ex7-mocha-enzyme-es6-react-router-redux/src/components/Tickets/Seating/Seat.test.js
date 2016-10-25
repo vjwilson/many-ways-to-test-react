@@ -5,6 +5,8 @@ import { shallow } from 'enzyme';
 import Seat from './Seat';
 
 describe('Seat component', function() {
+  let seat;
+
   it('should render a seat with the proper structure (smoke test)', () => {
     const shallowOutput = shallow(
       <Seat />
@@ -59,9 +61,15 @@ describe('Seat component', function() {
   });
 
   it('should render a seat with custom seat number prop', () => {
+    seat = {
+      seatNumber: 'B6',
+      price: 24.00,
+      sold: false
+    };
+
     const component = shallow(
       <Seat
-        seatNumber="B6"
+        seat={seat}
       />
     );
     const seatText = component.find('text')
@@ -71,11 +79,18 @@ describe('Seat component', function() {
 
   describe('the dynamic colors of the seat', function() {
     it('should render the correct colors for an available seat', () => {
+      seat = {
+        seatNumber: 'B6',
+        price: 24.00,
+        sold: false
+      };
+
       const currentColor = '#000000';
       const fillColor = '#ffffff';
 
       const component = shallow(
         <Seat
+          seat={seat}
         />
       );
       const rect = component.find('path')
@@ -87,12 +102,19 @@ describe('Seat component', function() {
     });
 
     it('should render the correct colors for a selected seat', () => {
+      seat = {
+        seatNumber: 'B6',
+        price: 24.00,
+        sold: false,
+        selected: true
+      };
+
       const currentColor = '#ffffff';
       const fillColor = '#f10030';
 
       const component = shallow(
         <Seat
-          selected={true}
+          seat={seat}
         />
       );
       const rect = component.find('path')
@@ -104,12 +126,18 @@ describe('Seat component', function() {
     });
 
     it('should render the correct colors for a sold seat', () => {
+      seat = {
+        seatNumber: 'B6',
+        price: 24.00,
+        sold: true
+      };
+
       const currentColor = '#999999';
       const fillColor = '#f1f1f1';
 
       const component = shallow(
         <Seat
-          sold={true}
+          seat={seat}
         />
       );
       const rect = component.find('path')
@@ -128,20 +156,42 @@ describe('Seat component', function() {
       clickHandler = sinon.spy();
     });
 
-    it('should call its clickHandler with the seat number', function() {
-      const seatNumber = 'C4';
+    it('should call its clickHandler if a seat is not sold', function() {
+      seat = {
+        seatNumber: 'B6',
+        price: 24.00,
+        sold: false
+      };
 
       const shallowOutput = shallow(
         <Seat
-          seatNumber={seatNumber}
-          onClick={clickHandler}
+          seat={seat}
+          onSeatClick={clickHandler}
         />
       );
 
       shallowOutput.simulate('click');
 
       expect(clickHandler.calledOnce).to.be.true;
-      expect(clickHandler.calledWith(seatNumber)).to.be.true;
+    });
+
+    it('should NOT call its clickHandler if a seat is sold', function() {
+      seat = {
+        seatNumber: 'B6',
+        price: 24.00,
+        sold: true
+      };
+
+      const shallowOutput = shallow(
+        <Seat
+          seat={seat}
+          onSeatClick={clickHandler}
+        />
+      );
+
+      shallowOutput.simulate('click');
+
+      expect(clickHandler.called).to.be.false;
     });
 
   });

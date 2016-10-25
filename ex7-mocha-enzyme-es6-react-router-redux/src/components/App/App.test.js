@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import CastMemberList from '../Cast/CastMemberList';
 
-describe.only('App component', function() {
+describe('App component', function() {
   let props;
 
   const mockInitialUser = {
@@ -39,12 +39,6 @@ describe.only('App component', function() {
       expect(shallowOutput.hasClass('container')).to.be.true;
     });
 
-    it('should have state that matches the intial Props', function() {
-      const shallowOutput = shallow(<App {...props} />);
-
-      expect(shallowOutput.prop('user')).to.deep.equal({});
-    });
-
     it('should have a section for its children', function() {
       const shallowOutput = shallow(<App {...props} />);
 
@@ -60,19 +54,19 @@ describe.only('App component', function() {
       };
     });
 
-    it('should have the initial user prop', function() {
+    it('should pass the user prop down to the Header', function() {
       const shallowOutput = shallow(<App {...props} />);
 
-      expect(shallowOutput.prop('user')).to.deep.equal(mockInitialUser);
+      const header = shallowOutput.find(Header)
+
+      expect(header.prop('user')).to.deep.equal(mockInitialUser);
     });
   });
 
   describe('child components', function() {
     beforeEach(function() {
       props = {
-        route: {
-          initialUser: mockInitialUser
-        },
+        user: mockInitialUser,
         children: mockChildren
       };
     });

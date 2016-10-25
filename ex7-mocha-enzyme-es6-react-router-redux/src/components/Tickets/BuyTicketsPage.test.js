@@ -9,10 +9,15 @@ import mockSeatData from '../../../test/fixtures/mockSeatData';
 
 describe('BuyTicketsPage component', function() {
   let props;
+  let toggleSeatSelected;
 
   beforeEach(function() {
+    toggleSeatSelected = sinon.spy();
     props = {
-      seats: []
+      seats: [],
+      actions: {
+        toggleSeatSelected: toggleSeatSelected
+      }
     };
   });
 
@@ -47,7 +52,7 @@ describe('BuyTicketsPage component', function() {
       const seatingChart = shallowOutput.find(SeatingChart)
 
       expect(seatingChart).to.have.lengthOf(1);
-      expect(seatingChart.props()).to.contain.keys(['width', 'height', 'onClick', 'seatData']);
+      expect(seatingChart.props()).to.contain.keys(['width', 'height', 'onSeatClick', 'seatData']);
     });
 
     it('should include a ticket form', function() {
@@ -56,7 +61,7 @@ describe('BuyTicketsPage component', function() {
       const ticketForm = shallowOutput.find(TicketForm)
 
       expect(ticketForm).to.have.lengthOf(1);
-      expect(ticketForm.props()).to.contain.keys(['package']);
+      expect(ticketForm.props()).to.contain.keys(['selectedSeats', 'buy']);
     });
   });
 
@@ -119,45 +124,39 @@ describe('BuyTicketsPage component', function() {
 
 
       // find the elements to act upon
-      const seatC1 = buyTicketsPage.findWhere(n => n.prop('sold') === false && n.text() === 'C1');
-      const seatC2 = buyTicketsPage.findWhere(n => n.prop('sold') === false && n.text() == 'C2');
+      const seatC1 = buyTicketsPage.findWhere(n =>  n.prop('seat') && n.prop('seat').sold === false && n.text() === 'C1');
+      const seatC2 = buyTicketsPage.findWhere(n => n.prop('seat') && n.prop('seat').sold === false && n.text() == 'C2');
 
       // act
       seatC1.simulate('click');
       seatC2.simulate('click');
 
-      const seatArray = buyTicketsPage.state('seatData');
-      const ticketPackage = buyTicketsPage.state('ticketPackage');
+      const seatArray = buyTicketsPage.prop('seats');
 
       // assert
-      expect(seatArray[2][0].selected).to.be.true;
-      expect(seatArray[2][1].selected).to.be.true;
-      expect(ticketPackage.seats).to.have.lengthOf(2);
+      expect(toggleSeatSelected.calledTwice).to.be.true;
     });
 
     it('should handle deselecting a seat from its seating chart component (the right way, using the component API)', function() {
       props.seats = JSON.parse(JSON.stringify(mockSeatData));
+      props.seats[2][0].selected = true;
+      props.seats[2][1].selected = true;
 
       const buyTicketsPage = mount(<BuyTicketsPage {...props} />);
 
+
       // find the elements to act upon
-      const seatC1 = buyTicketsPage.findWhere(n => n.prop('sold') === false && n.text() === 'C1');
-      const seatC2 = buyTicketsPage.findWhere(n => n.prop('sold') === false && n.text() == 'C2');
+      const seatC1 = buyTicketsPage.findWhere(n =>  n.prop('seat') && n.prop('seat').selected === true && n.text() === 'C1');
+      const seatC2 = buyTicketsPage.findWhere(n => n.prop('seat') && n.prop('seat').selected === true && n.text() == 'C2');
 
       // act
-      // first clicks on each element should select them
       seatC1.simulate('click');
       seatC2.simulate('click');
 
-      // second click on one of the elements should deselect them
-      seatC1.simulate('click');
+      const seatArray = buyTicketsPage.prop('seats');
 
-      const seatArray = buyTicketsPage.state('seatData');
-      const ticketPackage = buyTicketsPage.state('ticketPackage');
-
-      expect(seatArray[2][0].selected).to.be.false;
-      expect(seatArray[2][1].selected).to.be.true;
-      expect(ticketPackage.seats).to.have.lengthOf(1);
+      // assert
+      expect(toggleSeatSelected.calledTwice).to.be.true;
     });
 
     it('should handle selecting seats and checking out (the right way, using the component API)', function() {

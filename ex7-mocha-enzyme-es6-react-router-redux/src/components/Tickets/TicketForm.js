@@ -8,7 +8,7 @@ export default class TicketForm extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.buy(event);
+    this.props.buy(event, this.props.selectedSeats);
   }
 
   render() {

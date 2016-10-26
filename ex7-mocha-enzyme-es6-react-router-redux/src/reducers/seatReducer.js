@@ -29,6 +29,7 @@ export default function seatReducer(state = initialState.seats, action) {
         return row.map((seat) => {
           if (seat.seatNumber === action.seat.seatNumber) {
             const updatedSeat = Object.assign({}, seat);
+            updatedSeat.selected = false;
             updatedSeat.sold = true;
             return updatedSeat;
           } else {

@@ -11,35 +11,16 @@ export class BuyTicketsPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      ticketPackage: {
-        seats: []
-      }
-    };
-
     this.buyTickets = this.buyTickets.bind(this);
   }
 
-  buyTickets(event) {
+  buyTickets(event, selectedSeats) {
     event.preventDefault();
 
-    if (this.state.ticketPackage.seats.length) {
-      for (let i = 0, len = this.state.seatData.length; i < len; i++) {
-        this.state.seatData[i].forEach((seat) => {
-          if (seat.selected) {
-            seat.selected = false;
-            seat.sold = true;
-          }
-        });
-      }
-
-      this.setState({
-        seatData: this.state.seatData,
-        ticketPackage: {
-          seats: []
-        }
-      });
-
+    if (selectedSeats.length) {
+      selectedSeats.forEach((seat) => {
+        this.props.actions.markSeatSold(seat);
+      })
     }
   }
 

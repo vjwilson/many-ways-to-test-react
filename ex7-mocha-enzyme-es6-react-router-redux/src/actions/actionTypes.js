@@ -1,0 +1,8 @@
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
+export const LOAD_SEATS = 'LOAD_SEATS';
+export const TOGGLE_SEAT_SELECTED = 'TOGGLE_SEAT_SELECTED';
+export const MARK_SEAT_SOLD = 'MARK_SEAT_SOLD';
+
+export const LOAD_CAST_MEMBERS = 'LOAD_CAST_MEMBERS';

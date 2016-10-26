@@ -1,0 +1,33 @@
+.jumbotron {
+  background: url("/images/cast-photo1200.jpg") center/cover no-repeat;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  min-height: 575px;
+  overflow: hidden;
+  position: relative;
+}
+
+.jumbotron .ghosted {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  bottom: 5rem;
+  clear: left;
+  float: left;
+  padding: .5rem 1rem;
+  position: absolute;
+}
+
+.ticket-form {
+  background-color: #f1f1f1;
+  margin: 1em auto;
+  padding: 1em;
+  width: 80%;
+}
+
+.ticket-form__table {
+  margin: 1em auto;
+  width: 320px;
+}
+
+.ticket-form__footer {
+  font-weight: bold;
+}

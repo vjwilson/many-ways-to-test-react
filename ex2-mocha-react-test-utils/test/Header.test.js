@@ -77,8 +77,12 @@ describe('Header component', () => {
     var loginBlock = ShallowTestUtils.findWithClass(output, 'login-block');
 
     expect(loginBlock.props.children[0].props.children).to.equal('Welcome, ' + user.username);
-
     expect(loginBlock.props.children[1].props.children.props.children).to.equal('Logout');
+
+    var navbarText = ShallowTestUtils.findWithClass(output, 'navbar-text');
+    var navbarLink = ShallowTestUtils.findWithClass(output, 'navbar-link');
+    expect(navbarText.props.children).to.equal('Welcome, ' + user.username);
+    expect(navbarLink.props.children).to.equal('Logout');
   });
 
   describe('Header actions', function() {

@@ -47,4 +47,11 @@ describe('CastMember component', () => {
     expect(secondChild.type).to.equal('div');
     expect(secondChild.props.className).to.equal('media-body');
   });
+
+  it('should contain a heading element', () => {
+    const output = TestUtils.renderIntoDocument(<CastMember {...props} />);
+    const titleElement = TestUtils.findRenderedDOMComponentWithClass(output, 'media-heading');
+
+    expect(TestUtils.isDOMComponent(titleElement)).to.be.true;
+  });
 });

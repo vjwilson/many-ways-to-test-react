@@ -77,7 +77,7 @@ class BuyTicketsPage extends React.Component {
         <div className="page-header">
           <h1>Buy Tickets <small>Select the seats you wish to purchase below.</small></h1>
         </div>
-        <SeatingChart onClick={this.updateSeatStatus} seatData={this.state.seatData} width={1024} height={640} />
+        <SeatingChart onClick={this.updateSeatStatus} seatData={this.state.seatData} width={1024} height={600} />
         <TicketForm package={this.state.ticketPackage} buy={this.buyTickets} />
       </div>
     );

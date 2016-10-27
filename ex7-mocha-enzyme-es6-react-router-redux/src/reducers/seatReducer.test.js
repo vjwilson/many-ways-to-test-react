@@ -4,7 +4,7 @@ import * as actions from '../actions/seatActions';
 import mockSeatData from '../../test/fixtures/mockSeatData';
 import * as types from '../actions/actionTypes';
 
-describe('Seat reducer', function() {
+describe.only('Seat reducer', function() {
   let seats;
 
   beforeEach(function() {
@@ -13,14 +13,12 @@ describe('Seat reducer', function() {
 
   it('should load seats', function() {
     const initialState = [];
-    const action = {
-      type: types.LOAD_SEATS,
-      seats: seats
-    };
+    const action = actions.loadSeats(seats);
 
     const newState = seatReducer(initialState, action);
+    const expectedSeats = JSON.parse(JSON.stringify(mockSeatData));
 
-    expect(newState).to.equal(seats);
+    expect(newState).to.eql(expectedSeats);
   });
 
   it('should mark a seat as selected', function() {
@@ -30,10 +28,7 @@ describe('Seat reducer', function() {
     const expectedState = JSON.parse(JSON.stringify(initialState));
     expectedState[0][2].selected = true;
 
-    const action = {
-      type: types.TOGGLE_SEAT_SELECTED,
-      seat: seat
-    };
+    const action = actions.toggleSeatSelected(seat);
 
     const newState = seatReducer(initialState, action);
 
@@ -50,10 +45,7 @@ describe('Seat reducer', function() {
     const expectedState = JSON.parse(JSON.stringify(initialState));
     expectedState[0][2].selected = false;
 
-    const action = {
-      type: types.TOGGLE_SEAT_SELECTED,
-      seat: seat
-    };
+    const action = actions.toggleSeatSelected(seat);
 
     const newState = seatReducer(initialState, action);
 
@@ -71,10 +63,7 @@ describe('Seat reducer', function() {
     expectedState[0][2].sold = true;
     expectedState[0][2].selected = false;
 
-    const action = {
-      type: types.MARK_SEAT_SOLD,
-      seat: seat
-    };
+    const action = actions.markSeatSold(seat);
 
     const newState = seatReducer(initialState, action);
 

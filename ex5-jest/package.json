@@ -8,9 +8,8 @@
     "webpack": "webpack  --progress --colors",
     "webpack:watch": "webpack  --progress --colors --watch",
     "live-server": "live-server --port=3004",
-    "test": "mocha --reporter spec test/helpers/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch",
-    "test:jest": "jest \"__tests__/\""
+    "test": "jest \"__tests__/\"",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "<a keyword>",

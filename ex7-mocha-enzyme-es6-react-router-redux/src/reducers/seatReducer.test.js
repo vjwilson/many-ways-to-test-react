@@ -65,9 +65,11 @@ describe('Seat reducer', function() {
   it('should mark a seat as sold', function() {
     const initialState = seats;
     const seat = seats[0][2]; // mock seat A3
+    seat.selected = true;
 
     const expectedState = JSON.parse(JSON.stringify(seats));
     expectedState[0][2].sold = true;
+    expectedState[0][2].selected = false;
 
     const action = {
       type: types.MARK_SEAT_SOLD,

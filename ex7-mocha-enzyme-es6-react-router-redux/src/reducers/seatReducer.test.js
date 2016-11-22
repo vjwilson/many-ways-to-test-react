@@ -4,7 +4,7 @@ import * as actions from '../actions/seatActions';
 import mockSeatData from '../../test/fixtures/mockSeatData';
 import * as types from '../actions/actionTypes';
 
-describe.only('Seat reducer', function() {
+describe('Seat reducer', function() {
   let seats;
 
   beforeEach(function() {
